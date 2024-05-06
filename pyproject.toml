@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "frappe_gql_adaptor"
+version = "0.1.0"
+description = ""
+authors = ["AgriTheory <support@agritheory.dev>"]
+license = "MIT"
+readme = "README.md"
+packages = [
+	{include = "frappe_gql_adaptor"}
+]
+
+
+[tool.poetry.dependencies]
+python = "^3.8"
+graphql-server = "^3.0.0b7"
+redis-dict = "^2.5.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
