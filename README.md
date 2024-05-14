@@ -6,11 +6,11 @@ Add frappe-gql-adaptor as a python dependency in your project
 
 Configure in hooks.py
 
-
-
 ## Development install
 
-`git clone`
-`poetry build -f wheel`
-`cd ~/frappe-bench`
-`bench pip install -e ~/frappe-gql-adaptor` # required after every change in code
+```sh
+git clone
+poetry build -f wheel
+cd ~/frappe-bench
+bench pip install -e ~/frappe-gql-adaptor # required after every change in code
+```
