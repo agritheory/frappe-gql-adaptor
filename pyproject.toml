@@ -1,24 +1,29 @@
 [tool.poetry]
 name = "frappe_gql_adaptor"
 version = "0.1.0"
-description = ""
+description = "GraphQL API Layer for Frappe Framework"
 authors = ["AgriTheory <support@agritheory.dev>"]
 license = "MIT"
 readme = "README.md"
+repository = "https://github.com/agritheory/frappe-gql-adaptor"
 packages = [
-	{include = "frappe_gql_adaptor"}
+	{ include = "frappe_gql_adaptor", format = "wheel" },
 ]
 
-
 [tool.poetry.dependencies]
-python = "^3.8"
+python = ">=3.10, <3.13"
 graphql-server = "^3.0.0b7"
 redis-dict = "^2.5.0"
 
+[tool.poetry.group.dev.dependencies]
+frappe = {git = "https://github.com/frappe/frappe.git", branch = "version-15", optional = true}
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.codespell]
+skip = "poetry.lock"
 
 [tool.semantic_release.branches.main]
 match = "main"

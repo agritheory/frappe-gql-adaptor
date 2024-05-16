@@ -1,5 +1,4 @@
 from graphql import graphql_sync
-from werkzeug.wrappers import Request
 
 import frappe
 from frappe_gql_adaptor.schema import get_graphql_schema
@@ -40,7 +39,7 @@ def get_query():
 	if not hasattr(frappe.local, "request"):
 		return query, variables, operation_name
 
-	request: Request = frappe.local.request
+	request = frappe.local.request
 	content_type = request.content_type or ""
 
 	if request.method == "GET":
