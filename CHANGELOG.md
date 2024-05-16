@@ -14,4 +14,4 @@
 
 feat: pre-commit hook configurations ([`9072c1f`](https://github.com/agritheory/frappe-gql-adaptor/commit/9072c1ff1789e5da55c3789775dcc10b4d700f4d))
 
-* initial commmit ([`ebd8b7b`](https://github.com/agritheory/frappe-gql-adaptor/commit/ebd8b7bee0e992588b4c009ad6d39e3a30e5e2ef))
+* initial commit ([`ebd8b7b`](https://github.com/agritheory/frappe-gql-adaptor/commit/ebd8b7bee0e992588b4c009ad6d39e3a30e5e2ef))
