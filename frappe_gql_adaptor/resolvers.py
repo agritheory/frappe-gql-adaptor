@@ -1,12 +1,14 @@
 import json
+from typing import Any
 
+from graphql import GraphQLResolveInfo
 from redis_dict import RedisDict
 
 import frappe
 from frappe.modules import get_doc_path
 
 
-def get_list(obj, info, *args):
+def get_list(obj: Any, info: GraphQLResolveInfo, *args):
 	doctype = info.path.key.replace("list", "")
 	fields = ["name"]
 	# TODO:
@@ -16,7 +18,7 @@ def get_list(obj, info, *args):
 	return frappe.get_all(doctype, filters=None, fields=fields)
 
 
-def get_doc(obj, info, *args):
+def get_doc(obj: Any, info: GraphQLResolveInfo, *args):
 	print(info)
 	return {}
 
@@ -31,23 +33,21 @@ def delete_doc(*args):
 	return {}
 
 
-"""
-def get_doc_resolver(obj, info, **kwargs):
-	dt = get_singular_doctype(info.field_name)
-	if is_single(dt):
-		kwargs["name"] = dt
+# def get_doc_resolver(obj: Any, info: GraphQLResolveInfo, **kwargs):
+# 	dt = get_singular_doctype(info.field_name)
+# 	if is_single(dt):
+# 		kwargs["name"] = dt
 
-	dn = kwargs["name"]
-	if not frappe.has_permission(doctype=dt, doc=dn):
-		raise frappe.PermissionError(frappe._(f"No permission for {dt} {dn}"))
+# 	dn = kwargs["name"]
+# 	if not frappe.has_permission(doctype=dt, doc=dn):
+# 		raise frappe.PermissionError(frappe._(f"No permission for {dt} {dn}"))
 
-	doc = frappe.get_doc(dt, dn)
-	doc.apply_fieldlevel_read_permissions()
-	return doc
-"""
+# 	doc = frappe.get_doc(dt, dn)
+# 	doc.apply_fieldlevel_read_permissions()
+# 	return doc
 
 
-def get_meta(self, info, doctype):
+def get_meta(obj: Any, info: GraphQLResolveInfo, doctype: str):
 	d = RedisDict(namespace="gql")
 	for _doctype in frappe.get_hooks(hook="graphql").get("doctypes"):
 		if not frappe.conf.developer_mode and d.get(frappe.scrub(doctype)):

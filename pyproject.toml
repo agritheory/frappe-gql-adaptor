@@ -34,7 +34,7 @@ graphql-server = "^3.0.0b7"
 redis-dict = "^2.5.0"
 
 [tool.poetry.group.dev.dependencies]
-frappe = {git = "https://github.com/frappe/frappe.git", branch = "version-15", optional = true}
+frappe = {git = "https://github.com/frappe/frappe.git", branch = "version-15"}
 
 [tool.codespell]
 skip = "CHANGELOG.md,poetry.lock"
