@@ -32,7 +32,7 @@ def graphql_server():
 	frappe.local.response.update(response)
 
 
-def get_query():
+def get_query() -> tuple[str | None, str | dict | None, str | None]:
 	query = None
 	variables = None
 	operation_name = None

@@ -2,13 +2,31 @@
 name = "frappe_gql_adaptor"
 version = "0.1.0"
 description = "GraphQL API Layer for Frappe Framework"
-authors = ["AgriTheory <support@agritheory.dev>"]
 license = "MIT"
+authors = ["AgriTheory <support@agritheory.dev>"]
 readme = "README.md"
+homepage = "https://github.com/agritheory/frappe-gql-adaptor"
 repository = "https://github.com/agritheory/frappe-gql-adaptor"
-packages = [
-	{ include = "frappe_gql_adaptor", format = "wheel" },
+packages = [{ include = "frappe_gql_adaptor", format = "wheel" }]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Web Environment",
+  "Framework :: Pytest",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python",
+  "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+  "Topic :: Internet :: WWW/HTTP",
+  "Topic :: Software Development :: Libraries :: Python Modules",
 ]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.dependencies]
 python = ">=3.10, <3.13"
@@ -16,55 +34,10 @@ graphql-server = "^3.0.0b7"
 redis-dict = "^2.5.0"
 
 [tool.poetry.group.dev.dependencies]
-frappe = {git = "https://github.com/frappe/frappe.git", branch = "version-15", optional = true}
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+frappe = {git = "https://github.com/frappe/frappe.git", branch = "version-15"}
 
 [tool.codespell]
-skip = "poetry.lock"
+skip = "CHANGELOG.md,poetry.lock"
 
-[tool.semantic_release.branches.main]
-match = "main"
-prerelease = false
-
-[tool.semantic_release.changelog]
-template_dir = "templates"
-changelog_file = "CHANGELOG.md"
-exclude_commit_patterns = []
-
-[tool.semantic_release.changelog.environment]
-block_start_string = "{%"
-block_end_string = "%}"
-variable_start_string = "{{"
-variable_end_string = "}}"
-comment_start_string = "{#"
-comment_end_string = "#}"
-trim_blocks = false
-lstrip_blocks = false
-newline_sequence = "\n"
-keep_trailing_newline = false
-extensions = []
-autoescape = true
-
-[tool.semantic_release.commit_author]
-env = "GIT_COMMIT_AUTHOR"
-default = "semantic-release <semantic-release>"
-
-[tool.semantic_release.commit_parser_options]
-allowed_tags = ["build", "chore", "ci", "docs", "feat", "fix", "perf", "style", "refactor", "test"]
-minor_tags = ["feat"]
-patch_tags = ["fix", "perf"]
-
-[tool.semantic_release.remote]
-name = "origin"
-type = "github"
-ignore_token_for_push = false
-
-[tool.semantic_release.remote.token]
-env = "GH_TOKEN"
-
-[tool.semantic_release.publish]
-dist_glob_patterns = ["dist/*"]
-upload_to_vcs_release = true
+[tool.semantic_release]
+version_toml = ["pyproject.toml:tool.poetry.version"]

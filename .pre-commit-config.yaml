@@ -14,17 +14,22 @@ repos:
         args: ['--branch', 'develop']
       - id: check-merge-conflict
       - id: check-ast
-      - id: check-json
       - id: check-toml
-      - id: check-yaml
       - id: debug-statements
 
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.2.6
+    rev: v2.3.0
     hooks:
       - id: codespell
         additional_dependencies:
         - tomli
+
+  - repo: https://github.com/python-poetry/poetry
+    rev: 1.8.3
+    hooks:
+    -   id: poetry-check
+    -   id: poetry-lock
+    -   id: poetry-install
 
 ci:
   autoupdate_schedule: weekly
